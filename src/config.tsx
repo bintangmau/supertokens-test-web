@@ -13,6 +13,15 @@ export const SuperTokensConfig = {
         ThirdPartyEmailPassword.init({
             signInAndUpFeature: {
                 providers: [Github.init(), Google.init(), Apple.init()],
+                signUpForm: {
+                    formFields: [
+                        {
+                            id: "username",
+                            label: "Username",
+                            placeholder: "Input username"
+                        }
+                    ]
+                }
             },
         }),
         Session.init(),

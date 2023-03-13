@@ -4,10 +4,22 @@ import { SessionAuth } from "supertokens-auth-react/recipe/session";
 import { Routes, BrowserRouter as Router, Route } from "react-router-dom";
 import Home from "./Home";
 import { SuperTokensConfig } from "./config";
+import { useEffect } from 'react';
+import Session from "supertokens-auth-react/recipe/session";
+
 
 SuperTokens.init(SuperTokensConfig);
-
-function App() {
+async function getToken(): Promise<void> {
+    const accessToken = await Session.getAccessToken();
+    console.log(accessToken);
+}
+function App(): any {
+    useEffect(() => {
+        const getTokens = async () => {
+            await getToken()
+        };
+        getTokens();
+    }, [])
     return (
         <SuperTokensWrapper>
             <div className="App">
